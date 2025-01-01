@@ -58,9 +58,9 @@ public class CarroService {
         if(criteriaRequest.getFabicante().isPresent()){
             predicates.add(cb.like(cb.lower(carro.get("fabricante")), "%"+criteriaRequest.getFabicante().get().toLowerCase()+"%"));
         }
-        if(criteriaRequest.getPais().isPresent()){
+        if(criteriaRequest.getStatus().isPresent()){
 
-            predicates.add(cb.like(cb.lower(carro.get("pais")), "%"+criteriaRequest.getPais().get().toLowerCase()+"%"));
+            predicates.add(cb.like(cb.lower(carro.get("status")), criteriaRequest.getStatus().get().toLowerCase()+"%"));
         }
         cq.where(predicates.toArray(Predicate[]::new));
         return entityManager.createQuery(cq).getResultList();

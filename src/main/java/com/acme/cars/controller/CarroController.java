@@ -16,8 +16,10 @@ import java.io.File;
 import java.util.List;
 import java.util.Optional;
 
-@RestController  @RequestMapping("/api/carros")
-@RequiredArgsConstructor  @CrossOrigin(origins = "*")
+@RestController
+@RequestMapping("/api/carros")
+@RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
 public class CarroController {
     private final CarroService carroService;
     private final CsvService csvService;
@@ -27,12 +29,18 @@ public class CarroController {
     public ResponseEntity<List<Carro>> search(
             @RequestHeader(value = "modelo", required = false) Optional<String> modelo,
             @RequestHeader(value = "fabricante", required = false) Optional<String> fabricante,
-            @RequestHeader(value = "pais", required = false) Optional<String> pais) {
+            @RequestHeader(value = "status", required = false) Optional<String> status) {
 
-        CriteriaRequest criteriaRequest = new CriteriaRequest(modelo, fabricante,pais);
+        // Imprimindo os headers no console
+        System.out.println("Header - Modelo: " + modelo.orElse("Não informado"));
+        System.out.println("Header - Fabricante: " + fabricante.orElse("Não informado"));
+        System.out.println("Header - Status: " + status.orElse("Não informado"));
+
+        CriteriaRequest criteriaRequest = new CriteriaRequest(modelo, fabricante, status);
         List<Carro> search = carroService.search(criteriaRequest);
         return ResponseEntity.ok(search);
     }
+
     @GetMapping
     public ResponseEntity<List<Carro>> listarTodos(@RequestHeader(value = "page", defaultValue = "0") String page,
                                                    @RequestHeader(value = "size", defaultValue = "10") String size) {

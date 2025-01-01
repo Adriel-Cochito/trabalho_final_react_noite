@@ -10,5 +10,5 @@ import java.util.Optional;
 public class CriteriaRequest {
     Optional<String> modelo;
     Optional<String> fabicante;
-    Optional<String> pais;
+    Optional<String> status;
 }

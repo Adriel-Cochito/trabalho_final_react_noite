@@ -24,10 +24,12 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
     private final SecurityService securityService;
     private final TokenService tokenService;
+
     @GetMapping
     public ResponseEntity<List<Usuario>> getAllUsuario() {
         return ResponseEntity.ok(usuarioService.findAll());
     }
+
     @PostMapping("/login")
     public ResponseEntity<?> autenticate(@RequestBody AuthUserDTO authUserDTO){
         try{
