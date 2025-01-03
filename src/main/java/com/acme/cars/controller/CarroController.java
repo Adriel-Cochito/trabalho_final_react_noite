@@ -61,9 +61,20 @@ public class CarroController {
 
     @PostMapping
     public ResponseEntity<Carro> salvar(@RequestBody Carro carro) {
+        // Impressão dos parâmetros do carro no console
+        System.out.println("ID: " + carro.getId());
+        System.out.println("Modelo: " + carro.getModelo());
+        System.out.println("Ano: " + carro.getAno());
+        System.out.println("Cor: " + carro.getCor());
+        System.out.println("Cavalos de Potência: " + carro.getCavalosDePotencia());
+        System.out.println("Fabricante: " + carro.getFabricante());
+        System.out.println("País: " + carro.getPais());
+        System.out.println("Status: " + carro.getStatus());
+
         Carro carroSalvo = carroService.salvar(carro);
         return ResponseEntity.status(HttpStatus.CREATED).body(carroSalvo);
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Carro> atualizar(@PathVariable Long id, @RequestBody Carro carroAtualizado) {
