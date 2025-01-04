@@ -19,6 +19,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/usuarios")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequiredArgsConstructor
 public class UsuarioController {
     private final UsuarioService usuarioService;

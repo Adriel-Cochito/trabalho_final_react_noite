@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/version")
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")  // Liberando CORS para todos os métodos deste controlador
+@CrossOrigin(origins = "http://localhost:3000")
 public class VersionController {
     @GetMapping
     public VersionPayload getVersion() {
