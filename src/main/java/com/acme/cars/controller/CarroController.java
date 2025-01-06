@@ -19,7 +19,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/carros")
 @RequiredArgsConstructor
-@CrossOrigin(origins = {"http://localhost:3000", "https://spontaneous-froyo-96572d.netlify.app"})
 public class CarroController {
     private final CarroService carroService;
     private final CsvService csvService;
