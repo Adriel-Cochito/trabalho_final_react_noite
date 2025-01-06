@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/locations")
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = {"http://localhost:3000", "https://spontaneous-froyo-96572d.netlify.app"})
 public class LocationController {
     private final LocationService locationService;
     @GetMapping
